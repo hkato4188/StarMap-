@@ -33,10 +33,18 @@ public class ApodService {
     }
 
     private String getRandomDate() {
+        Random random = new Random();
         LocalDate start = LocalDate.of(2001, 1, 1);
-        long days = start.until(LocalDate.now()).getDays();
-        LocalDate randomDate = start.plusDays(new Random().nextInt((int) days));
-        return randomDate.format(DateTimeFormatter.ISO_DATE);
+        LocalDate end = LocalDate.now();
+        // Calculate the number of days between the start and end dates
+        long daysBetween = java.time.temporal.ChronoUnit.DAYS.between(start, end);
+        // Generate a random number of days to add to the start date
+        long randomDays = random.nextLong(daysBetween + 1);
+        // Create the random date
+        LocalDate randomDate = start.plusDays(randomDays);
+        // Format the date as "YYYY-MM-DD"
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return randomDate.format(formatter);
     }
 
     public Apod getApodByDate(String date) {

@@ -21,6 +21,12 @@ public class ApodController {
         return "apod";
     }
 
+    @GetMapping("/apod/random")
+    public String getRandomPod(Model model) {
+        Apod apod = apodService.fetchApodData(true);
+        model.addAttribute("apod", apod);
+        return "apod";
+    }
 
 
 }

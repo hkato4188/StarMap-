@@ -1,0 +1,25 @@
+.small-dropdown-menu {
+    font-size: 0.8rem; /* Smaller font size for dropdown items */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+.small-dropdown-menu .dropdown-item {
+    padding: 0.25rem 1rem; /* Smaller padding for dropdown items */
+}
+
+.small-dropdown-menu .dropdown-divider {
+    margin: 0.25rem 0; /* Smaller margin for the divider */
+}
+
+/* Custom styles for the logout button */
+.navbar-toggler {
+    padding: 0.25rem 0.5rem; /* Smaller padding for the toggle button */
+}
+
+.btn-sm {
+    font-size: 0.75rem; /* Smaller font size for buttons */
+    padding: 0.25rem 0.5rem; /* Smaller padding for buttons */
+    margin-top: 0.25rem;
+}
