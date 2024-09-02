@@ -37,7 +37,7 @@ public class NasaTest {
     @BeforeEach
     void setUp() throws IOException {
         fileJson = new String(Files.readAllBytes(nasaPodJson.getFile().toPath()));
-        objectMapper.readValue(fileJson, );
+//        objectMapper.readValue(fileJson, );
     }
 
 

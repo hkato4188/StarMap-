@@ -36,7 +36,7 @@ public class SecurityController {
 
     @GetMapping("/error")
     public String error(){
-        return "login-error";
+        return "login_error";
     }
 
     @GetMapping("/login")

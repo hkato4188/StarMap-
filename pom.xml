@@ -8,7 +8,7 @@
 		<version>3.3.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>dev.hkato.nasa</groupId>
+	<groupId>dev.hiro.kato</groupId>
 	<artifactId>Kato_Hiroki_StarMap_CaseStudy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Nasa-API-CRUD</name>
