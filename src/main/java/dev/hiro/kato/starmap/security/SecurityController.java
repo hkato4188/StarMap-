@@ -24,7 +24,7 @@ public class SecurityController {
     @GetMapping("/register")
     public String addUser(Model model) {
         model.addAttribute("user", new User());
-        return "registration";
+        return "security/registration";
     }
 
     @PostMapping("/register")
@@ -38,13 +38,13 @@ public class SecurityController {
 
     @GetMapping("/error")
     public String error(){
-        return "login_error";
+        return "security/login_error";
     }
 
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("user", new User());
-        return "login";
+        return "security/login";
     }
 
     @PostMapping("/login")

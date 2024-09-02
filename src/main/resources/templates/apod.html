@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Astronomy Picture of the Day</title>
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+</head>
+<body>
+<h1>Astronomy Picture of the Day</h1>
+
+<div id="pod-content" th:if="${apod != null}">
+    <h2 th:text="${apod.title}"></h2>
+    <p th:text="${apod.date}"></p>
+    <img th:src="${apod.url}" alt="POD Image">
+    <p th:text="${apod.explanation}"></p>
+    <p th:text="'Copyright: ' + ${apod.copyright}"></p>
+    <a th:href="${apod.hdurl}" target="_blank">View HD Image</a>
+</div>
+
+<div id="error-content" th:if="${error != null}">
+    <p th:text="${error}" style="color:red;"></p>
+</div>
+
+</body>
+</html>
