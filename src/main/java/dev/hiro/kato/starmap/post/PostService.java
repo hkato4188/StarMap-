@@ -1,4 +1,4 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.post;
 
 import org.springframework.stereotype.Repository;
 
@@ -11,15 +11,15 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    List<Post> findAll(){
+    public List<Post> findAll(){
         return postRepository.findAll();
     };
 
-    Post save(Post post) {
+    public Post save(Post post) {
         return postRepository.save(post);
     }
 
-    Post findById(Long id) {return postRepository.findById(id).get();}
+    public Post findById(Long id) {return postRepository.findById(id).get();}
 
-    void delete(Post post) {postRepository.delete(post);}
+    public void delete(Post post) {postRepository.delete(post);}
 }

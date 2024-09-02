@@ -1,4 +1,4 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.user;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;

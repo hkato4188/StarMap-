@@ -1,5 +1,6 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.post;
 
+import dev.hiro.kato.starmap.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

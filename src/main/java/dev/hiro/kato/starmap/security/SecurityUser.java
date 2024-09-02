@@ -1,5 +1,6 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.security;
 
+import dev.hiro.kato.starmap.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

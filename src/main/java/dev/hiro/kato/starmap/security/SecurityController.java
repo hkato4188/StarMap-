@@ -1,5 +1,7 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.security;
 
+import dev.hiro.kato.starmap.user.User;
+import dev.hiro.kato.starmap.user.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

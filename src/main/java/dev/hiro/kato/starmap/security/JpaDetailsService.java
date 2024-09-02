@@ -1,5 +1,6 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.security;
 
+import dev.hiro.kato.starmap.user.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

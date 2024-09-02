@@ -1,4 +1,4 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.pod;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Pod {

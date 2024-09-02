@@ -1,4 +1,4 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.post;
 
 
 import org.springframework.data.repository.ListCrudRepository;

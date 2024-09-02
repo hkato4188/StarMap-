@@ -1,4 +1,4 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.pod;
 
 
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package dev.hiro.kato.starmap;
+package dev.hiro.kato.starmap.security;
 
 
 import org.springframework.context.annotation.Bean;
