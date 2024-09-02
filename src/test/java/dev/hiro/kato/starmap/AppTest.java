@@ -1,10 +1,10 @@
-package dev.hkato.nasa.Nasa.API.CRUD;
+package dev.hiro.kato.starmap;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class App {
+class AppTest {
 
 	@Test
 	void contextLoads() {

@@ -1,4 +1,4 @@
-package dev.hkato.nasa.Nasa.API.CRUD;
+package dev.hiro.kato.starmap;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

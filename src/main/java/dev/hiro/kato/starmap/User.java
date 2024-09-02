@@ -1,9 +1,11 @@
-package dev.hkato.nasa.Nasa.API.CRUD;
+package dev.hiro.kato.starmap;
+
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @NoArgsConstructor
@@ -11,18 +13,18 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table
-
-public class Post {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
+    private String username;
     @Column(nullable = false)
-    private String title;
-    @Column(nullable = false)
-    private String body;
+    private String password;
 
-    public Post(String title, String body){
-        this.title = title;
-        this.body = body;
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
     }
+
 }

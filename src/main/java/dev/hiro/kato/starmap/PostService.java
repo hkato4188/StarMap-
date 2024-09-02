@@ -1,4 +1,4 @@
-package dev.hkato.nasa.Nasa.API.CRUD;
+package dev.hiro.kato.starmap;
 
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +19,7 @@ public class PostService {
         return postRepository.save(post);
     }
 
+    Post findById(Long id) {return postRepository.findById(id).get();}
+
+    void delete(Post post) {postRepository.delete(post);}
 }

@@ -1,4 +1,4 @@
-package dev.hkato.nasa.Nasa.API.CRUD;
+package dev.hiro.kato.starmap;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
