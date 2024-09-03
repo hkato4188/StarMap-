@@ -1,0 +1,42 @@
+body {
+    background-color: #000; /* Dark background for space */
+    color: #ffffff; /* White text for contrast */
+    font-family: 'Orbitron', sans-serif; /* Space-themed font */
+    background-image: url("https://apod.nasa.gov/apod/image/2306/Chandrafirstlight_0.jpg"); /* Optional starry background image */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.1); /* Slight transparency for the table background */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 10px 20px;
+    text-align: center;
+    border: 1px solid #1E90FF; /* Electric blue borders */
+}
+
+table th {
+    background-color: #1E90FF;
+    color: #000;
+}
+
+
+
+
+.btn-outline-secondary {
+    color: #1E90FF;
+    border-color: #1E90FF;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #1E90FF;
+    color: #000;
+}
