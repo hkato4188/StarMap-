@@ -80,7 +80,17 @@ public class PostController {
     @GetMapping("/delete/{id}")
     public String deletePost(@PathVariable("id") Long id) {
         Post post = postService.findById(id);
-//                .orElseThrow(() -> new IllegalArgumentException("Invalid post Id:" + id));
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = ((SecurityUser) authentication.getPrincipal()).getUsername();
+        User user = userService.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user"));
+
+        if (!post.getUser().getUsername().equals(user.getUsername())) {
+            return "error";
+            //throw new SecurityException("You are not authorized to edit this post");
+
+        }
 
         postService.delete(post);
         return "redirect:/posts";

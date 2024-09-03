@@ -12,7 +12,6 @@ public class DetailsController {
 
     @GetMapping("/about")
     public String showAbout(Model model) {
-
         return "details/about";
     }
 

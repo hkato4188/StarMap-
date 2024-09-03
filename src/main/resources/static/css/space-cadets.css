@@ -1,0 +1,214 @@
+/* Font Families */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat-Bold", sans-serif;
+}
+
+p {
+    color: #8f8f8f;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+}
+
+/* Headers */
+
+.big-header {
+    font-family: "Montserrat-Black", sans-serif;
+    font-size: 350%;
+    line-height: 1.5;
+    font-weight: bold;
+    padding-bottom: 2rem;
+}
+
+.section-header {
+    font-size: 300%;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* Containers */
+
+.container-fluid {
+    padding: 7% 15%;
+}
+
+/* Backgrounds */
+
+.color-background {
+    background-color: #535C91; /* Dark blue for NASA theme */
+    color: #fff;
+}
+
+.white-background {
+    background-color: #fff;
+}
+
+/* Title */
+
+.title-image {
+    height: 65%;
+    transform: rotate(10deg);
+    position: absolute;
+    right: 25%;
+}
+
+#title .container-fluid {
+    padding: 3% 15%;
+    text-align: left;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    padding: 0 0 4.5rem;
+}
+
+.navbar-brand {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 250%;
+}
+
+.nav-item {
+    padding: 0 18px;
+}
+
+.nav-link {
+    font-size: 120%;
+    font-family: "Montserrat-Light", sans-serif;
+}
+
+/* Download Buttons */
+
+.download-button {
+    margin: 5% 3% 5% 0;
+}
+
+/* Features Section */
+
+#features {
+    position: relative;
+}
+
+.feature-title {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.feature-box {
+    padding: 5%;
+}
+
+.icon {
+    color: #FC6736; /* NASA yellow for icons */
+    margin-bottom: 1rem;
+}
+
+.icon:hover {
+    color: #9290C3; /* Keep hover effect consistent with theme */
+}
+
+/* Testimonial Section */
+
+.testimonial-text {
+    font-size: 300%;
+    line-height: 1.5;
+}
+
+.testifier {
+    font-style: italic;
+}
+
+#testimonials {
+    background-color: #535C91; /* Dark blue for NASA theme */
+}
+
+.testimonial-image {
+    width: 20%;
+    border-radius: 100%;
+    margin: 20px;
+}
+
+.cool-cat {
+    width: 13%;
+    border-radius: 100%;
+    margin: 20px;
+}
+
+#press {
+    background-color: #1B1A55; /* Dark blue for NASA theme */
+    padding-bottom: 3%;
+}
+
+.press-logo {
+    width: 15%;
+    margin: 20px 20px 50px;
+}
+
+/* Pricing Section */
+
+#pricing {
+    padding: 3%;
+}
+
+.pricing-column {
+    padding: 3% 2%;
+}
+
+.plan-text {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+#rocket {
+    display: inline-block;
+    font-size: 4rem; /* Adjust size as needed */
+    transition: transform 0.3s ease;
+}
+
+/* Keyframes for rumbling effect */
+@keyframes rumble {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+
+#rocket:hover {
+    animation: rumble 0.5s infinite;
+    /* Optional: add some rotation or scaling for extra effect */
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* Footer */
+
+.social-icon {
+    margin: 20px 10px;
+}
+
+@media (max-width: 1000px) {
+    .title-image {
+        position: static;
+        padding-top: 1rem;
+        transform: rotate(0deg);
+    }
+
+    #title {
+        text-align: left;
+    }
+
+    h2 {
+        font-size: 200%;
+        font-weight: bold;
+        line-height: 1;
+    }
+}
