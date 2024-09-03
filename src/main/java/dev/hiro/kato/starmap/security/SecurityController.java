@@ -31,6 +31,10 @@ public class SecurityController {
 
     @PostMapping("/register")
     public String addUser(@ModelAttribute("user") User user) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
+            return "redirect:users";
+        }
+
         //Save user to db
         String encrypted = passwordEncoder.encode(user.getPassword());
         user.setPassword(encrypted);
