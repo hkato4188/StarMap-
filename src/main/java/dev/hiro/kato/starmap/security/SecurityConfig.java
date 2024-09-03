@@ -28,15 +28,15 @@ public class SecurityConfig  {
                     auth.requestMatchers("/register").permitAll();
                     auth.anyRequest().authenticated();})
                 .userDetailsService(jpaDetailsService)
-                .oauth2Login(oauth2 -> oauth2
-                        .loginPage("/login") // Redirect to the same custom login page
-                        .defaultSuccessUrl("/users")
-                        .failureUrl("/error"))
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/users")
                         .failureUrl("/error")
                         .permitAll())
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/login") // Redirect to the same custom login page
+                        .defaultSuccessUrl("/users")
+                        .failureUrl("/error"))
                 .logout(logout -> logout
                         .logoutUrl("/logout")  // Specify the logout URL (default is /logout)
                         .logoutSuccessUrl("/")

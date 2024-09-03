@@ -9,7 +9,7 @@
 </head>
 <body>
 <header>
-    <div th:insert="fragments/navbar"></div>
+    <div th:insert="~{fragments/navbar}"></div>
 </header>
 <div class="d-grid gap-2">
     <a th:href="@{/posts/new}" class="btn btn-outline-secondary">Create New Post</a>
