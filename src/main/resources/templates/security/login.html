@@ -64,6 +64,20 @@
             <a href="http://localhost:8080/register">Not Registered? Sign up!</a>
         </div>
     </form>
+    <hr>
+
+    <!-- OAuth2 login buttons -->
+    <div>
+        <a href="#" th:href="@{/oauth2/authorization/google}">
+            <button class="btn btn-custom btn-block" type="button">Login with Google</button>
+        </a>
+    </div>
+    <br>
+    <div>
+        <a href="#" th:href="@{/oauth2/authorization/github}">
+            <button class="btn btn-custom btn-block" type="button">Login with GitHub</button>
+        </a>
+    </div>
 </div>
 
 <!-- Bootstrap JS and dependencies -->

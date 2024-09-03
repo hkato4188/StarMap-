@@ -2,6 +2,8 @@ package dev.hiro.kato.starmap.security;
 
 import dev.hiro.kato.starmap.user.User;
 import dev.hiro.kato.starmap.user.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,11 +40,16 @@ public class SecurityController {
 
     @GetMapping("/error")
     public String error(){
-        return "security/login_error";
+
+        return "security/error";
     }
 
     @GetMapping("/login")
     public String login(Model model) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
+            return "redirect:users";
+        }
+
         model.addAttribute("user", new User());
         return "security/login";
     }

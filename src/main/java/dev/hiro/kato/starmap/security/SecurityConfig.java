@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 
 @Configuration
 @EnableWebSecurity
@@ -26,6 +28,10 @@ public class SecurityConfig  {
                     auth.requestMatchers("/register").permitAll();
                     auth.anyRequest().authenticated();})
                 .userDetailsService(jpaDetailsService)
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/login") // Redirect to the same custom login page
+                        .defaultSuccessUrl("/users")
+                        .failureUrl("/error"))
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/users")
@@ -33,7 +39,7 @@ public class SecurityConfig  {
                         .permitAll())
                 .logout(logout -> logout
                         .logoutUrl("/logout")  // Specify the logout URL (default is /logout)
-                        .logoutSuccessUrl("/login?logout") // Redirect to the login page with a logout parameter
+                        .logoutSuccessUrl("/")
                         .invalidateHttpSession(true) // Invalidate the session
                         .deleteCookies("JSESSIONID") // Delete cookies
                 )
