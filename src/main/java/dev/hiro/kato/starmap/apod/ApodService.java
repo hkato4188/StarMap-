@@ -28,6 +28,10 @@ public class ApodService {
         return apodClient.fetchApodData(apiKey, date);
     }
 
+    public Apod fetchApodDataByDate(String date) {
+        return apodClient.fetchApodData(apiKey, date);
+    }
+
     private String getCurrentDate() {
         return LocalDate.now().format(DateTimeFormatter.ISO_DATE);
     }
@@ -47,8 +51,6 @@ public class ApodService {
         return randomDate.format(formatter);
     }
 
-    public Apod getApodByDate(String date) {
-        return apodRepository.findByDate(date);
-    }
+
 
 }
