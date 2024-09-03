@@ -1,0 +1,37 @@
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+.login-container {
+    max-width: 400px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login-container h1 {
+    margin-bottom: 1.5rem;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.form-group label {
+    margin-bottom: 0.5rem;
+}
+.btn-custom {
+    background-color: #007bff;
+    color: #ffffff;
+}
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+.text-center a {
+    color: #007bff;
+}
+.text-center a:hover {
+    color: #0056b3;
+}
