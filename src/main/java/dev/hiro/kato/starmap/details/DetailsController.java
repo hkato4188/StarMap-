@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class DetailsController {
 
-    @GetMapping("/about")
+    @GetMapping("/")
     public String showAbout(Model model) {
         return "details/about";
     }

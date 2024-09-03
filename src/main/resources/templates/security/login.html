@@ -1,40 +1,77 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .login-container {
+            max-width: 400px;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h1 {
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            margin-bottom: 0.5rem;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .text-center a {
+            color: #007bff;
+        }
+        .text-center a:hover {
+            color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+<div class="login-container">
+    <h1 class="text-center">User Login</h1>
+    <form th:action="@{/login}" th:object="${user}" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" th:field="*{username}" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" th:field="*{password}" required>
+        </div>
+        <button type="submit" class="btn btn-custom btn-block">Login</button>
+        <div class="text-center mt-3">
+            <a href="http://localhost:8080/register">Not Registered? Sign up!</a>
+        </div>
+    </form>
+</div>
 
-<h1>Custom Login</h1>
-
-<form th:action="@{/login}" th:object="${user}" method="POST">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" th:field="*{username}" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" th:field="*{password}" required>
-    </div>
-    <div>
-        <button type="submit">Login</button>
-    </div>
-    <div>
-        <a href="http://localhost:8080/register">Not Registered? | Sign up!</a>
-    </div>
-</form>
+<!-- Bootstrap JS and dependencies -->
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-
 
 
