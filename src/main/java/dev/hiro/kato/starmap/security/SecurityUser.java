@@ -29,3 +29,28 @@ public class SecurityUser implements UserDetails {
 
 
 }
+@Service
+@Transactional
+public class OAuth2UserService {
+
+    private final UserRepository userRepository;
+
+    public OAuth2UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void processOAuthPostLogin(OAuth2User oauthUser) {
+        String email = oauthUser.getAttribute("email");
+
+        User existingUser = userRepository.findByEmail(email);
+
+        if (existingUser == null) {
+            User newUser = new User();
+            newUser.setId(oauthUser.getAttribute("sub"));  // Use unique ID from OAuth
+            newUser.setEmail(email);
+            newUser.setName(oauthUser.getAttribute("name"));
+
+            userRepository.save(newUser);
+        }
+    }
+}
