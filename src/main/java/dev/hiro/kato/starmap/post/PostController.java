@@ -6,6 +6,7 @@ import dev.hiro.kato.starmap.user.User;
 import dev.hiro.kato.starmap.user.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,40 +32,36 @@ public class PostController {
     @GetMapping("/new")
     public String showCreateForm(Model model) {
         model.addAttribute("post", new Post("", ""));
-        return "posts/create";  // This corresponds to src/main/resources/templates/posts/create.html
+        return "posts/create";
     }
 
     @PostMapping
-    public String createPost(@ModelAttribute Post post) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = ((SecurityUser) authentication.getPrincipal()).getUsername();
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user"));
+    public String createPost(@ModelAttribute Post post, Authentication authentication) {
+        try{
+            String username = authentication.getName();
+            User user = userService.findByUsername(username)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid user"));
+            post.setUser(user);
+            postService.save(post);
+        }finally{
+            return "redirect:posts";
+        }
 
-        post.setUser(user); // Associate the post with the logged-in user
-        postService.save(post);
-        return "redirect:posts";  // Redirects to the list of posts after saving
     }
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model) {
         Post post = postService.findById(id);
-               //need error handling if post not found
+        //need error handling if post not found
         model.addAttribute("post", post);
         return "posts/update";  // Corresponds to src/main/resources/templates/posts/edit.html
     }
 
     @PostMapping("/update/{id}")
-    public String updatePost(@PathVariable("id") Long id, @ModelAttribute Post post) {
+    public String updatePost(@PathVariable("id") Long id, @ModelAttribute Post post, Authentication authentication) {
         Post existingPost = postService.findById(id);
 //                .orElseThrow(() -> new IllegalArgumentException("Invalid post Id:" + id));
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = ((SecurityUser) authentication.getPrincipal()).getUsername();
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user"));
-
-        if (!existingPost.getUser().getUsername().equals(user.getUsername())) {
+        if (!existingPost.getUser().getUsername().equals(authentication.getName())) {
             return "error";
             //throw new SecurityException("You are not authorized to edit this post");
 
@@ -78,20 +75,12 @@ public class PostController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deletePost(@PathVariable("id") Long id) {
+    public String deletePost(@PathVariable("id") Long id, Authentication authentication) {
         Post post = postService.findById(id);
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = ((SecurityUser) authentication.getPrincipal()).getUsername();
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user"));
-
-        if (!post.getUser().getUsername().equals(user.getUsername())) {
+        if (!post.getUser().getUsername().equals(authentication.getName())) {
             return "error";
             //throw new SecurityException("You are not authorized to edit this post");
-
         }
-
         postService.delete(post);
         return "redirect:/posts";
     }

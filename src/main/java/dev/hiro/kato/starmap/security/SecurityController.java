@@ -3,7 +3,6 @@ package dev.hiro.kato.starmap.security;
 import dev.hiro.kato.starmap.user.User;
 import dev.hiro.kato.starmap.user.UserService;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,12 +29,7 @@ public class SecurityController {
     }
 
     @PostMapping("/register")
-    public String addUser(@ModelAttribute("user") User user) {
-        if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
-            return "redirect:users";
-        }
-
-        //Save user to db
+    public String addUser(@ModelAttribute("user") User user, Authentication authentication) {
         String encrypted = passwordEncoder.encode(user.getPassword());
         user.setPassword(encrypted);
         userService.save(user);
@@ -44,16 +38,11 @@ public class SecurityController {
 
     @GetMapping("/error")
     public String error(){
-
         return "security/error";
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
-        if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
-            return "redirect:users";
-        }
-
+    public String login(Model model, Authentication authentication) {
         model.addAttribute("user", new User());
         return "security/login";
     }
@@ -62,5 +51,4 @@ public class SecurityController {
     public String login(@ModelAttribute("user") User user) {
         return "redirect:users";
     }
-
 }

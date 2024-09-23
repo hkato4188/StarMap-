@@ -15,7 +15,6 @@ public class SecurityUser implements UserDetails {
     }
 
     @Override
-    //we have to come back to this
     public Collection<? extends GrantedAuthority> getAuthorities() {return null;}
 
     @Override
