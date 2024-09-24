@@ -41,7 +41,7 @@ public class SecurityConfig  {
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/login") // Redirect to the same custom login page
-                        .defaultSuccessUrl("/oauth")
+                        .defaultSuccessUrl("/login")
                         .failureUrl("/error"))
                 .build();
     }

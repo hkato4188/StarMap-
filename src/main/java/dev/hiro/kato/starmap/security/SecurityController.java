@@ -53,17 +53,4 @@ public class SecurityController {
         return "redirect:users";
     }
 
-    @GetMapping("/oauth")
-    public String processOauth(Authentication authentication) {
-        if (authentication.getPrincipal() instanceof OidcUser oidcUser) {
-            String  oAuthName = oidcUser.getName();
-            if(userService.findByUsername(oAuthName) == null){
-                User newUser = new User();
-                newUser.setUsername(oAuthName);
-                newUser.setPassword("oauth");
-                userService.save(newUser);
-            }
-        }
-        return "redirect:users";
-    }
 }
