@@ -1,8 +1,11 @@
 package dev.hiro.kato.starmap.security;
 
 import dev.hiro.kato.starmap.user.User;
+import dev.hiro.kato.starmap.user.UserRepository;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 
 import java.util.Collection;
 
@@ -28,29 +31,4 @@ public class SecurityUser implements UserDetails {
     }
 
 
-}
-@Service
-@Transactional
-public class OAuth2UserService {
-
-    private final UserRepository userRepository;
-
-    public OAuth2UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public void processOAuthPostLogin(OAuth2User oauthUser) {
-        String email = oauthUser.getAttribute("email");
-
-        User existingUser = userRepository.findByEmail(email);
-
-        if (existingUser == null) {
-            User newUser = new User();
-            newUser.setId(oauthUser.getAttribute("sub"));  // Use unique ID from OAuth
-            newUser.setEmail(email);
-            newUser.setName(oauthUser.getAttribute("name"));
-
-            userRepository.save(newUser);
-        }
-    }
 }

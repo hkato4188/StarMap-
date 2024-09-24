@@ -4,6 +4,7 @@ import dev.hiro.kato.starmap.user.User;
 import dev.hiro.kato.starmap.user.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,6 +50,20 @@ public class SecurityController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute("user") User user) {
+        return "redirect:users";
+    }
+
+    @GetMapping("/oauth")
+    public String processOauth(Authentication authentication) {
+        if (authentication.getPrincipal() instanceof OidcUser oidcUser) {
+            String  oAuthName = oidcUser.getName();
+            if(userService.findByUsername(oAuthName) == null){
+                User newUser = new User();
+                newUser.setUsername(oAuthName);
+                newUser.setPassword("oauth");
+                userService.save(newUser);
+            }
+        }
         return "redirect:users";
     }
 }

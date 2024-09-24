@@ -1,9 +1,13 @@
 package dev.hiro.kato.starmap.security;
 
+import dev.hiro.kato.starmap.user.User;
+import dev.hiro.kato.starmap.user.UserRepository;
 import dev.hiro.kato.starmap.user.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Service;
 
 
@@ -23,10 +27,6 @@ public class JpaDetailsService implements UserDetailsService {
                 .map(SecurityUser::new)
                 .orElseThrow(() -> new UsernameNotFoundException(userName));
     }
-
-
-
-
 }
 
 //what do we return -> userDetails (the last thing is calling the new method)
