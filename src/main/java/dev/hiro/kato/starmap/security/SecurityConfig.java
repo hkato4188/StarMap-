@@ -25,7 +25,7 @@ public class SecurityConfig  {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/css/**","/images/**").permitAll();
                     auth.requestMatchers("/").permitAll();
-                    auth.requestMatchers("/register").permitAll();
+                    auth.requestMatchers("/register").permitAll();q
                     auth.anyRequest().authenticated();})
                 .userDetailsService(jpaDetailsService)
                 .formLogin((form) -> form
@@ -41,7 +41,7 @@ public class SecurityConfig  {
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/login") // Redirect to the same custom login page
-                        .defaultSuccessUrl("/login")
+                        .defaultSuccessUrl("/users")
                         .failureUrl("/error"))
                 .build();
     }

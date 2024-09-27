@@ -5,11 +5,14 @@ import dev.hiro.kato.starmap.security.SecurityUser;
 import dev.hiro.kato.starmap.user.User;
 import dev.hiro.kato.starmap.user.UserService;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Security;
 
 @Controller
 @RequestMapping("/posts")
